@@ -1,5 +1,33 @@
 class UsersController < ApplicationController
-  def index; end
+  def initialize
+    super()
+    @users = []
+  end
 
-  def show; end
+  def index
+    @users.push(UserInfo.new(1, 'Homer', 1, 'homer.jpg'))
+    @users.push(UserInfo.new(2, 'Marge', 2, 'marge.jpg'))
+    @users.push(UserInfo.new(3, 'Bart', 2, 'bart.gif'))
+    @users.push(UserInfo.new(4, 'Lisa', 10, 'lisa.png'))
+  end
+
+  def show
+    @users.push(UserInfo.new(1, 'Homer', 1, 'homer.jpg'))
+    @users.push(UserInfo.new(2, 'Marge', 2, 'marge.jpg'))
+    @users.push(UserInfo.new(3, 'Bart', 2, 'bart.gif'))
+    @users.push(UserInfo.new(4, 'Lisa', 10, 'lisa.png'))
+    index = params['id'].to_i - 1
+    @user_info = @users[index]
+  end
+end
+
+class UserInfo
+  def initialize(id, name, posts, image)
+    @id = id
+    @name = name
+    @posts = posts
+    @image = image
+  end
+
+  attr_reader :id, :name, :posts, :image
 end

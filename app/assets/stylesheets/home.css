@@ -1,12 +1,36 @@
+.users-container {
+  width: 80%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
 .user-card {
   display: flex;
+  border: 1px solid gray;
+  border-radius: 8px;
+}
+
+.user-card a {
+  text-decoration: none;
 }
 
 .user-card img {
-  width: 40px;
-  height: auto;
+  padding: 10px;
+  width: 100px;
+  height: 100px;
 }
 
 .user-info {
-  display: inline;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  padding-top: 10px;
+}
+
+.number-posts {
+  padding-top: 5px;
+  font-size: 0.8rem;
 }

@@ -1,8 +1,11 @@
-<h1>Home</h1>
+<div class='users-container'>
+<% for item in @users %>
 <div class='user-card'>
-  <img src=<%=image_path('homer.jpg')%>/>
+  <img src=<%=image_path(item.image)%>/>
   <div class='user-info'>
-  <a href='users/1'>Victor Peralta </a>
-  <p>Number of posts: 1</p>
+  <a href='users/<%=item.id%>'> <%=item.name%> </a>
+  <p class='number-posts'>Number of posts: <%=item.posts%></p>
   </div>
+</div>
+<% end %>
 </div>
