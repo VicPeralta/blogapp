@@ -1,0 +1,12 @@
+.user-card {
+  display: flex;
+}
+
+.user-card img {
+  width: 40px;
+  height: auto;
+}
+
+.user-info {
+  display: inline;
+}
