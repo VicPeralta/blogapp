@@ -1,24 +1,57 @@
-# README
+![](https://img.shields.io/badge/Microverse-blueviolet)
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# Blog app
 
-Things you may want to cover:
+A blog app build using Ruby on Rails
 
-* Ruby version
+## Built With
 
-* System dependencies
+- Ruby
+- Rails
 
-* Configuration
+## Prerequisites  
+- PostgreSql   
+- Ruby (2.7 or newer)
+- Bundle (2.1.4 or newer)
 
-* Database creation
+## Getting Started
 
-* Database initialization
+To get a local copy follow these simple example steps.  
 
-* How to run the test suite
+1.- Open the terminal window and clone the repository using this command:  
+`git clone git@github.com:VicPeralta/blogapp.git` 
 
-* Services (job queues, cache servers, search engines, etc.)
+2.- Change the directory to the blogapp directory  
+`cd blogapp`  
+3.- Install the project's dependencies by running this command:   
+`bundle install`  
+4.- Change the database configuration file (`database.yml`) to fit your local database's settings   
+5.- Start the server using this command:  
+`rails s`   
+6.- Open the browser at this address:  
+`http://127.0.0.1:3000/`   
 
-* Deployment instructions
+![](./capture.png)
 
-* ...
+## Live demo
+
+https://tranquil-beyond-78317.herokuapp.com/
+
+## Authors
+
+👤 **Victor Peralta**
+- GitHub: [@VicPeralta](https://github.com/VicPeralta)
+- Twitter: [@VicPeralta](https://twitter.com/VicPeralta)
+- Linkedin: [@VicPeralta](https://www.linkedin.com/in/vicperalta/)
+
+
+## 🤝 Contributing
+
+Contributions, issues, and feature requests are welcome!
+
+Feel free to check the [issues page](../../issues/).
+
+## Show your support
+
+Give a ⭐️ if you like this project!
+The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
