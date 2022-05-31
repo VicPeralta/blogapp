@@ -18,10 +18,10 @@
   <% (1..@user_info.posts.to_i).each do |i| %>
   <div class='post-card'>
   <p>Post # <%=i %></p>
-  <a href='/users/1/posts/1'>Lorem ipsum dolor sit amet, consectetur adipiscing elit</a>
+  <a href='/users/<%=@user_info.id%>/posts/<%=i%>'>Lorem ipsum dolor sit amet, consectetur adipiscing elit</a>
   </div>
   <% end %>
 
 </div>
-  <a href='/users/1/posts'>See all posts</a>
+  <a href='/users/<%=@user_info.id%>/posts'>See all posts</a>
 </div>
