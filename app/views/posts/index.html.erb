@@ -1,6 +1,10 @@
-<h1>Victor Peralta</h1>
-<h3>Number of post:1</h3>
-<div class='post-card'>
-<p>Post #1</p>
-<a href='/users/1/posts/1'>Lorem ipsum dolor sit amet, consectetur adipiscing elit</a>
+<div class='container'>
+  <h1><%=@user_info.name%></h1>
+  <h3>Number of post:<%=@user_info.posts%></h3>
+  <% (1..@user_info.posts.to_i).each do |i| %>
+    <div class='post-card'>
+      <p>Post #<%=i %></p>
+      <a href='/users/<%=@user_info.id%>/posts/<%=i %>'>Lorem ipsum dolor sit amet, consectetur adipiscing elit</a>
+    </div>
+  <% end %>
 </div>
