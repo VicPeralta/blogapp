@@ -31,7 +31,7 @@ To get a local copy follow these simple example steps.
 6.- Open the browser at this address:  
 `http://127.0.0.1:3000/`   
 
-![](./capture.png)
+![](./mobile.png)
 
 ## Live demo
 
