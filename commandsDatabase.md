@@ -9,11 +9,11 @@ Build your project schema.
 
 ## to create users table
 ```
-rails g migration CreateUsers Name:string Photo:string Bio:string PostCounter:integer
+rails g migration CreateUsers Name:string Photo:string Bio:text PostCounter:integer
 ```
 ## to create posts table
 ```
-rails g migration CreatePosts user_id:integer Title:string Text:string CommentsCounter:integer LikesCounter:integer
+rails g migration CreatePosts user_id:integer Title:string Text:text CommentsCounter:integer LikesCounter:integer
 ```
 
 Add this to the create_post file before running rake   
