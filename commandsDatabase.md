@@ -13,26 +13,27 @@ rails g migration CreateUsers Name:string Photo:string Bio:text PostCounter:inte
 ```
 ## to create posts table
 ```
-rails g migration CreatePosts user_id:integer Title:string Text:text CommentsCounter:integer LikesCounter:integer
+rails g migration CreatePosts author_id:integer Title:string Text:text CommentsCounter:integer LikesCounter:integer
 ```
 
 Add this to the create_post file before running rake   
 
 ```
-add_foreign_key :posts, :users
+add_foreign_key :posts, :users, column: :author_id, primary_key: 'id'
+add_index :posts, :author_id
 ```
 
 ## to create comments table
 ```
-rails g migration CreateComments user_id:integer post_id:integer Text:string
+rails g migration CreateComments author_id:integer post_id:integer Text:text
 ```
 
 Add this to the create_comments file before running rake
 
 ```
-add_foreign_key :comments, :users
+add_foreign_key :comments, :users, column: :author_id, primary_key: 'id'
 add_foreign_key :comments, :posts
-add_index :comments, :user_id
+add_index :comments, :author_id
 add_index :comments, :post_id
 ```
 
@@ -40,14 +41,14 @@ add_index :comments, :post_id
 ## to create likes table
 
 ```
-rails g migration CreateLikes user_id:integer post_id:integer
+rails g migration CreateLikes author_id:integer post_id:integer
 ```   
 
 Add this to the create_likes file before running rake
    
 ```
-add_foreign_key :likes, :users
+add_foreign_key :likes, :users, column: :author_id, primary_key: 'id'
 add_foreign_key :likes, :posts
-add_index :likes, :user_id
+add_index :likes, :author_id
 add_index :likes, :post_id
 ```
