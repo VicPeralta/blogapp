@@ -1,10 +1,10 @@
 <div class='users-container'>
-<% for item in @users %>
+<% for user in @users %>
 <div class='user-card'>
-  <img src=<%=image_path(item.image)%>/>
+  <img src=<%=image_path(user.photo)%>/>
   <div class='user-info'>
-  <a href='users/<%=item.id%>'> <%=item.name%> </a>
-  <p class='number-posts'>Number of posts: <%=item.posts%></p>
+  <a href='users/<%=user.id%>'> <%=user.name%> </a>
+  <p class='number-posts'>Number of posts: <%=user.postCounter%></p>
   </div>
 </div>
 <% end %>
