@@ -10,11 +10,13 @@
 <div class='bio-info'>
   <h3>Bio</h3>
   <p class='bio-info'><%=@user_info.bio%></p>
+  
   <% for post in @posts %>
-  <div class='post-card'>
-  <p>Post # <%=post.id %></p>
-  <a href='/users/<%=@user_info.id%>/posts/<%=post.id%>'><%=post.text%></a>
-  </div>
+    <div class='post-card'>
+      <p>Post # <%=post.id %></p>
+      <a href='/users/<%=@user_info.id%>/posts/<%=post.id%>'><%=post.text%></a>
+      <p>Comments: <%=post.comments.count%> Likes: <%post.likes.count%></p>
+    </div>
   <% end %>
 
 </div>

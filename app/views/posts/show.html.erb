@@ -1,5 +1,11 @@
 <div class='container'>
   <h1>Posts #<%=@post_info.id%></h1>
   <h2>by <%=@user_info.name%> </h2>
+  <p>Comments: <%=@post_info.comments.count%> Likes: <%@post_info.likes.count%></p>
   <p class='bio-info'><%=@post_info.text%></p>
+  <div class='post-card'>
+    <% for comment in @post_info.comments%>
+      <p><%=comment.author.name%> <%=comment.text%></p>
+    <% end %>
+    </div>
 </div>
