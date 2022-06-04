@@ -13,7 +13,7 @@
   <% for post in @posts %>
   <div class='post-card'>
   <p>Post # <%=post.id %></p>
-  <a href='/users/<%=@user_info.id%>/posts/<%=post.id%>'>post.text</a>
+  <a href='/users/<%=@user_info.id%>/posts/<%=post.id%>'><%=post.text%></a>
   </div>
   <% end %>
 
