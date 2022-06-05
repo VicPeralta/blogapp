@@ -15,5 +15,6 @@ class PostsController < ApplicationController
     post_index = params['id'].to_i
     @user_info = User.find(user_index)
     @post_info = Post.find(post_index)
+    puts "Likes: #{@post_info.likes.count}"
   end
 end
