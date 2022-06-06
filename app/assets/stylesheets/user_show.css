@@ -1,0 +1,19 @@
+.bio-info {
+  margin: 20px auto;
+  padding-left: 10px;
+}
+
+.all-button {
+  margin: 20px auto;
+  text-decoration: none;
+  padding: 10px 20px;
+  background-color: cornflowerblue;
+  color: white;
+  text-align: center;
+  width: fit-content;
+  display: block;
+}
+
+.all-button:hover {
+  padding: 20px 30px;
+}

@@ -1,0 +1,7 @@
+<div class='post-card'>
+  <p class='post-title' >Post # <%=post.id %></p>
+  <p class='post-text'>
+  <a href='/users/<%=user_info.id%>/posts/<%=post.id%>'><%=post.text%></a>
+  </p>
+  <p class='post-counters'>Comments: <%=post.comments.count%> Likes: <%=post.likes.count%></p>
+</div>

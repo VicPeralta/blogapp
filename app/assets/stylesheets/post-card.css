@@ -1,0 +1,35 @@
+.post-card {
+  border: 1px solid cornflowerblue;
+  border-radius: 8px;
+  padding: 20px;
+  margin: 10px auto;
+  width: 100%;
+}
+
+.post-title {
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: inherit;
+  margin-bottom: 10px;
+}
+
+.post-text {
+  text-decoration: none;
+  font-style: italic;
+  color: inherit;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.post-text a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.post-counters {
+  margin-right: 10px;
+  margin-left: auto;
+  width: fit-content;
+  font-size: 0.8rem;
+}

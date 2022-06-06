@@ -1,0 +1,19 @@
+.post-detail {
+  border: 1px solid cornflowerblue;
+  border-radius: 8px;
+  padding: 20px;
+  margin: 10px auto;
+  width: 100%;
+}
+
+.post-detail .header {
+  display: flex;
+  align-items: baseline;
+}
+
+.post-detail .post-text {
+  margin: 10px auto;
+  text-overflow: initial;
+  overflow: auto;
+  white-space: inherit;
+}

@@ -1,12 +1,16 @@
 <div class='container'>
-  <h1>Posts #<%=@post_info.id%></h1>
-  <h2>by <%=@user_info.name%> </h2>
-  <p>Comments: <%=@post_info.comments.count%> </p>
-  <p>Likes: <%=@post_info.likesCounter%></p>
-  <p class='bio-info'><%=@post_info.text%></p>
-  <div class='post-card'>
-    <% for comment in @post_info.comments%>
-      <p><%=comment.author.name%> <%=comment.text%></p>
-    <% end %>
+
+  <div class='post-detail'>
+    <div class='header'>
+      <p>Posts #<%=@post_info.id%>&nbsp;</p>
+      <p>by <%=@user_info.name%></p>
+      <div class='post-counters'>
+        <p>Comments: <%=@post_info.comments.count%> Likes: <%=@post_info.likesCounter%></p>
+      </div>
     </div>
+    <p class='post-text'><%=@post_info.text%></p>
+  </div>
+  <% for comment in @post_info.comments%>
+    <p class='comment'><%=comment.author.name%>: <%=comment.text%></p>
+  <% end %>
 </div>

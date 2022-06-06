@@ -1,11 +1,5 @@
 <div class='users-container'>
-<% for user in @users %>
-<div class='user-card'>
-  <img src=<%=image_path(user.photo)%>/>
-  <div class='user-info'>
-  <a href='users/<%=user.id%>'> <%=user.name%> </a>
-  <p class='number-posts'>Number of posts: <%=user.postCounter%></p>
-  </div>
-</div>
-<% end %>
+  <% for user in @users %>
+    <%= render partial: "shared/user_card", locals: {user:user }%>
+  <% end %>
 </div>

@@ -11,6 +11,6 @@ class UsersController < ApplicationController
   def show
     index = params['id'].to_i
     @user_info = User.find(index)
-    @posts = Post.where(author_id: index)
+    @posts = @user_info.three_most_recent_posts
   end
 end
