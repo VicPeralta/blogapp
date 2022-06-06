@@ -1,24 +1,12 @@
 
 <div class='container'>
- <div class='user-info-home'>
-  <img src=<%=@user_info.photo%>/>
-  <div>
-   <h2><%=@user_info.name%></h2>
-   <p>Number of posts: <%=@user_info.postCounter%> </p>
+  <%= render partial: "shared/user_card", locals: {user:@user_info }%>
+  <div class='bio-info'>
+    <h3>Bio</h3>
+    <p class='bio-info'><%=@user_info.bio%></p>
   </div>
-</div>
-<div class='bio-info'>
-  <h3>Bio</h3>
-  <p class='bio-info'><%=@user_info.bio%></p>
-  
   <% for post in @posts %>
-    <div class='post-card'>
-      <p>Post # <%=post.id %></p>
-      <a href='/users/<%=@user_info.id%>/posts/<%=post.id%>'><%=post.text%></a>
-      <p>Comments: <%=post.comments.count%> Likes: <%=post.likes.count%></p>
-    </div>
-  <% end %>
-
-</div>
-  <a href='/users/<%=@user_info.id%>/posts'>See all posts</a>
+      <%= render partial: "shared/post_card", locals: {post: post, user_info: @user_info}%>
+    <% end %>
+    <a class='all-button' href='/users/<%=@user_info.id%>/posts'>See all posts</a>
 </div>

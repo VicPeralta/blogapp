@@ -1,19 +1,7 @@
-.users-container {
-  width: 80%;
-  margin: auto;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
 .user-card {
   display: flex;
   border: 1px solid gray;
   border-radius: 8px;
-}
-
-.user-card a {
-  text-decoration: none;
 }
 
 .user-card img {
@@ -25,12 +13,32 @@
 .user-info {
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: space-around;
   padding-top: 10px;
+  width: 100%;
+}
+
+.user-info a {
+  font-size: 1.5rem;
+  text-decoration: none;
+  font-weight: bold;
+  color: inherit;
+  width: max-content;
+}
+
+.user-info img {
+  width: 200px;
+  height: 200px;
+}
+
+.user-info a:hover {
+  color: white;
+  background-color: cornflowerblue;
 }
 
 .number-posts {
   padding-top: 5px;
   font-size: 0.8rem;
+  margin-right: 10px;
+  margin-left: auto;
 }

@@ -1,0 +1,22 @@
+header {
+  width: 80%;
+  border: 1px solid cornflowerblue;
+  border-radius: 8px;
+  display: flex;
+  justify-content: space-around;
+  align-items: baseline;
+  margin: 20px auto;
+  padding-right: 10px;
+}
+
+header a {
+  color: cornflowerblue;
+  text-decoration: none;
+  font-size: 1.3rem;
+  padding: 10px;
+}
+
+header a:hover {
+  color: white;
+  background-color: cornflowerblue;
+}

@@ -55,16 +55,6 @@ h1 {
   margin: 10px;
 }
 
-header {
-  width: 80%;
-  border: 1px solid cornflowerblue;
-  border-radius: 8px;
-  display: flex;
-  justify-content: space-around;
-  align-items: baseline;
-  margin: 20px auto;
-}
-
 .container {
   width: 80%;
   margin-inline: auto;
