@@ -1,6 +1,7 @@
 class User < ApplicationRecord
   has_many :posts
   has_many :comments
+  has_many :likes
 
   # To be used without a user instance
   def self.three_most_recent_posts(user)
