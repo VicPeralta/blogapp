@@ -4,7 +4,6 @@ class Comment < ApplicationRecord
 
   def self.update_counter_for_post(post)
     # method that updates the comments counter for the given post
-    post.commentsCounter = Comment.where(post: post).count
-    post.save
+    post.update(commentsCounter: Comment.where(post: post).count )
   end
 end

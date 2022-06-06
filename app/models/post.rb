@@ -5,8 +5,7 @@ class Post < ApplicationRecord
 
   def self.update_counter_for_user(user)
     # method that updates the posts counter for the given user
-    user.postCounter = Post.where(author: user).count
-    user.save
+    user.update(postCounter: Post.where(author: user).count)
   end
 
   def self.five_most_recent_comments(post)
