@@ -1,9 +1,4 @@
 class UsersController < ApplicationController
-  def initialize
-    super()
-    @users = []
-  end
-
   def index
     @users = User.all
   end
