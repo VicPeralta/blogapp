@@ -5,10 +5,10 @@ class PostController < ApplicationController
   end
 
   def create
-    user = ApplicationController.current_user
     title = params[:post][:title]
     text = params[:post][:text]
-    @post = Post.new(author: user, title: title, text: text)
+    @post = Post.new(post_params)
+    @post.author = ApplicationController.current_user
     @errors = []
     @errors.push 'Title can not be empty' if title == ''
     @errors.push 'Text can not be empty' if text == ''
@@ -21,5 +21,11 @@ class PostController < ApplicationController
     else
       render :new, status: 400
     end
+  end
+
+  private
+
+  def post_params
+    params.require(:post).permit(:title, :text)
   end
 end
