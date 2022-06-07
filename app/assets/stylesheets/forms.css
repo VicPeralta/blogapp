@@ -5,11 +5,13 @@
   margin: 20px 0;
 }
 
-.form-group label {
+.form-group label,
+.add-comment label {
   margin-right: 10px;
 }
 
 .form-group input,
+.add-comment input,
 textarea {
   border-radius: 8px;
 }

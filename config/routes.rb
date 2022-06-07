@@ -10,5 +10,6 @@ Rails.application.routes.draw do
   get '/users/', to:'users#index', as: 'users'
   get '/users/:id', to:'users#show', as: 'user'
   resources :service, path: 'service/like', to:'service#like'
+  post 'service/comment', to:'service#comment', as: 'service_comment'
   match '*unmatched', to: 'application#route_not_found', via: :all
 end

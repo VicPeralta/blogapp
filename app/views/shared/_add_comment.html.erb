@@ -1,0 +1,8 @@
+  <%= form_with model: @comment, class:'form', 
+    url: service_comment_path(post_id: post_id, user_id: user_id) do |form| %>
+    <div class='add-comment'>
+      <%= form.label :text, "Comment" %>
+      <%= form.text_field :text, placeholder:'Enter comment' %>
+      <%= form.submit "Post comment"  %>
+    </div>
+  <% end %>
