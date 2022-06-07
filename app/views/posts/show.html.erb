@@ -3,6 +3,7 @@
   <div class='post-detail'>
     <div class='header'>
       <p>Posts #<%=@post_info.id%>&nbsp;</p>
+      <p><%=@post_info.title%>&nbsp;</p>
       <p>by <%=@user_info.name%></p>
       <div class='post-counters'>
         <p>Comments: <%=@post_info.comments.count%> Likes: <%=@post_info.likesCounter%></p>
