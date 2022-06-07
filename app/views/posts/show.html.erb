@@ -3,14 +3,17 @@
   <div class='post-detail'>
     <div class='header'>
       <p>Posts #<%=@post_info.id%>&nbsp;</p>
+      <p><%=@post_info.title%>&nbsp;</p>
       <p>by <%=@user_info.name%></p>
       <div class='post-counters'>
         <p>Comments: <%=@post_info.comments.count%> Likes: <%=@post_info.likesCounter%></p>
       </div>
     </div>
     <p class='post-text'><%=@post_info.text%></p>
+    <%= link_to "Like", service_index_path(user_id:@user_info.id, post_id:@post_info.id), class: "like-button" %>
   </div>
   <% for comment in @post_info.comments%>
     <p class='comment'><%=comment.author.name%>: <%=comment.text%></p>
   <% end %>
+  <%= render partial: "shared/add_comment", locals: {post_id:@post_info.id, user_id:@user_info.id }%>
 </div>

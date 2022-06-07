@@ -1,0 +1,35 @@
+
+.form-group {
+  font-family: inherit;
+  width: 80%;
+  margin: 20px 0;
+}
+
+.form-group label,
+.add-comment label {
+  margin-right: 10px;
+}
+
+.form-group input,
+.add-comment input,
+textarea {
+  border-radius: 8px;
+}
+
+input[type='submit'] {
+  text-decoration: none;
+  padding: 10px 20px;
+  background-color: cornflowerblue;
+  color: white;
+  text-align: center;
+  border: none;
+}
+
+.error {
+  background-color: #dc3545;
+  color: white;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+}
