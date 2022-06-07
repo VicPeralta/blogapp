@@ -17,3 +17,12 @@
   overflow: auto;
   white-space: inherit;
 }
+
+.post-detail .like-button {
+  padding: 5px 10px;
+  background-color: red;
+  color: white;
+  border: none;
+  text-decoration: none;
+  border-radius: 5px;
+}
