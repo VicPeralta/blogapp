@@ -12,7 +12,7 @@
     <p class='post-text'><%=@post_info.text%></p>
     <%= link_to "Like", service_index_path(user_id:@user_info.id, post_id:@post_info.id), class: "like-button" %>
   </div>
-  <% for comment in @post_info.comments%>
+  <% @post_info.comments.each do |comment|%>
     <p class='comment'><%=comment.author.name%>: <%=comment.text%></p>
   <% end %>
   <%= render partial: "shared/add_comment", locals: {post_id:@post_info.id, user_id:@user_info.id }%>

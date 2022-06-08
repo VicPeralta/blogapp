@@ -3,7 +3,7 @@
 
   <% for post in @posts %>
     <%= render partial:"shared/post_card", locals: {post:post, user_info:@user_info }%>
-    <% for comment in post.comments%>
+    <% post.comments.each do |comment|%>
       <p class='comment'><%=comment.author.name%>: <%=comment.text%></p>
     <% end %>
   <% end %>

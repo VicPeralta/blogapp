@@ -15,6 +15,13 @@
     <h1>The Blog application</h1>
     <a href='\'>Home</a>
   </header>
-    <%= yield %>
+  <% if flash.any?%>
+    <div class='error'>
+      <% flash.each do |name, msg| -%>
+          <%= content_tag :div, msg, class: name %>
+      <% end -%>
+    </div>
+  <%end%>
+  <%= yield %>
   </body>
 </html>
