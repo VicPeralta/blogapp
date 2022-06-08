@@ -11,15 +11,6 @@
     </div>
     <% end %>
 
-    <% if !@errors.length.zero? %>
-    <div class='error'>
-      <% @errors.each do |error|%>
-        <p>Error</p>
-        <p> <%=error%> </p>
-      <% end %>
-    </div>
-    <% end %>
-
     <div class='form-group'>
       <%= form.label :title %>
       <%= form.text_field :title, placeholder:'Enter title' %>

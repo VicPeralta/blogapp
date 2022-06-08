@@ -1,7 +1,6 @@
 class PostController < ApplicationController
   def new
     @post = Post.new
-    @errors = []
   end
 
   def create
@@ -9,10 +8,9 @@ class PostController < ApplicationController
     text = params[:post][:text]
     @post = Post.new(post_params)
     @post.author = ApplicationController.current_user
-    @errors = []
-    @errors.push 'Title can not be empty' if title == ''
-    @errors.push 'Text can not be empty' if text == ''
-    if @errors.empty?
+    flash.alert = 'Title can not be empty' if title == ''
+    flash.alert = 'Text can not be empty' if text == ''
+    if flash.none?
       if @post.save
         redirect_to user_path(id: @post.author.id), notice: 'Post created sucessfully'
       else
