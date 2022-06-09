@@ -58,7 +58,7 @@ development:
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: blogapp_development
+  database: blogapp_test
   username: blog_user
   password: <%= ENV["BLOG_DATABASE_PASSWORD"] %>
 
