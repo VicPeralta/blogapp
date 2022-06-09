@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'User model', type: :request do
+RSpec.describe 'Post model', type: :request do
   it 'Creates a valid instance' do
     user = User.first
     post = Post.new(author: user, title: 'Test', text: 'This is a test', commentsCounter: 0, likesCounter: 0)
