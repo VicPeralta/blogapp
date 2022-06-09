@@ -47,5 +47,4 @@ RSpec.describe 'User model', type: :request do
     expect(posts.size).to be == 3
     expect(posts[0].id).to be == 4
   end
-
 end
