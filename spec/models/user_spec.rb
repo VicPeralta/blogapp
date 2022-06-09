@@ -33,4 +33,19 @@ RSpec.describe 'User model', type: :request do
     expect(user).to_not be_valid
     expect(user.errors[:postCounter][0]).to be == 'postCounter must be integer and >=0'
   end
+
+  it 'Expect the three most recent posts for the first user (Instance method)' do
+    user = User.first
+    posts = user.three_most_recent_posts
+    expect(posts.size).to be == 3
+    expect(posts[0].id).to be == 4
+  end
+
+  it 'Expect the three most recent posts for the first user (Class method)' do
+    user = User.first
+    posts = User.three_most_recent_posts(user)
+    expect(posts.size).to be == 3
+    expect(posts[0].id).to be == 4
+  end
+
 end
