@@ -15,15 +15,15 @@ RSpec.describe 'PostsControllers', type: :request do
   end
 
   it 'Renders Post #1 from user 1 and returns correct status' do
-    get user_post_path(user_id: 1, id: 1)
+    get user_post_path(user_id: 1, id: 3)
     expect(response).to have_http_status(200)
   end
   it 'Renders Post #1 from user 1 and renders correct template' do
-    get user_post_path(user_id: 1, id: 1)
+    get user_post_path(user_id: 1, id: 3)
     expect(response).to render_template(:show)
   end
   it 'Renders Post #1 from user 1 and renders message Posts #1' do
-    get user_post_path(user_id: 1, id: 1)
-    expect(response.body).to include('Posts #1')
+    get user_post_path(user_id: 1, id: 3)
+    expect(response.body).to include('Posts #3')
   end
 end

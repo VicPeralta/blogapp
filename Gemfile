@@ -58,6 +58,8 @@ group :development, :test do
   gem 'ffi'
   gem 'rails-controller-testing'
   gem 'rspec-rails', '~> 6.0.0.rc1'
+  # Add bullet gem
+  gem 'bullet'
 end
 
 group :development do
