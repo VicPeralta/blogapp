@@ -8,6 +8,9 @@ class PostController < ApplicationController
     text = params[:post][:text]
     @post = Post.new(post_params)
     @post.author = ApplicationController.current_user
+    @post.likesCounter = 0
+    @post.commentsCounter = 0
+
     flash.alert = 'Title can not be empty' if title == ''
     flash.alert = 'Text can not be empty' if text == ''
     if flash.none?
