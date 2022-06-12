@@ -4,21 +4,17 @@ class PostController < ApplicationController
   end
 
   def create
-    title = params[:post][:title]
     text = params[:post][:text]
     @post = Post.new(post_params)
     @post.author = ApplicationController.current_user
-    @post.likesCounter = 0
-    @post.commentsCounter = 0
 
-    flash.alert = 'Title can not be empty' if title == ''
-    flash.alert = 'Text can not be empty' if text == ''
-    if flash.none?
-      if @post.save
-        redirect_to user_path(id: @post.author.id), notice: 'Post created sucessfully'
-      else
-        render :new, status: 400
-      end
+    if text.blank?
+      flash.now[:alert] = 'Text can not be empty'
+      render :new, status: 400
+      return
+    end
+    if @post.save
+      redirect_to user_path(id: @post.author.id), notice: 'Post created sucessfully'
     else
       render :new, status: 400
     end

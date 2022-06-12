@@ -1,19 +1,30 @@
 
 .form-group {
   font-family: inherit;
-  width: 80%;
+  width: 100%;
   margin: 20px 0;
+  display: flex;
+  flex-direction: column;
 }
 
 .form-group label,
 .add-comment label {
-  margin-right: 10px;
+  margin-bottom: 10px;
+  font-weight: bold;
 }
 
 .form-group input,
 .add-comment input,
 textarea {
   border-radius: 8px;
+  padding: 5px;
+}
+
+.form-group input:focus,
+.add-comment input:focus,
+textarea:focus {
+  border: none;
+  outline: 2px solid var(--highlighted-color);
 }
 
 input[type='submit'] {
@@ -23,13 +34,4 @@ input[type='submit'] {
   color: white;
   text-align: center;
   border: none;
-}
-
-.error {
-  background-color: #dc3545;
-  color: white;
-  border-radius: 8px;
-  display: flex;
-  flex-direction: column;
-  padding: 20px;
 }

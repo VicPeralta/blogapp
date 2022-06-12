@@ -14,6 +14,7 @@ class Post < ApplicationRecord
                             message: 'likesCounter must be integer and >=0' }
 
   after_save :increment_user_post_counter
+  after_destroy :decrement_user_post_counter
 
   def self.update_counter_for_user(user)
     # method that updates the posts counter for the given user
@@ -34,5 +35,9 @@ class Post < ApplicationRecord
 
   def increment_user_post_counter
     author.increment!(:postCounter)
+  end
+
+  def decrement_user_post_counter
+    author.decrement!(:postCounter)
   end
 end

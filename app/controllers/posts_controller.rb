@@ -9,6 +9,6 @@ class PostsController < ApplicationController
     user_index = params['user_id'].to_i
     post_index = params['id'].to_i
     @user_info = User.find(user_index)
-    @post_info = Post.find(post_index)
+    @post_info = Post.includes(:comments, comments: [:author]).find(post_index)
   end
 end
