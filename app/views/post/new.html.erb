@@ -1,9 +1,9 @@
 <div class='container'>
-  <h1>New Comment</h1>
+  <h1>New Post</h1>
 
   <%= form_with model: @post, class:'form',url: post_new_path do |form| %>
     <% if @post.errors.any? %>
-    <div class='error'>
+    <div class='alert'>
       <% @post.errors.full_messages.each do |error|%>
         <p>Error</p>
         <p> <%=error%> </p>

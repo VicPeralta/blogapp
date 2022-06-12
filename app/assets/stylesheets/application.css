@@ -28,6 +28,12 @@
   font-family: Roboto, Arial, Helvetica, sans-serif;
 }
 
+:root {
+  --highlighted-color: #00a2ff;
+  --alert-color: #dc3545;
+  --notice-color: #f8f3cd;
+}
+
 body,
 h1,
 h2,
@@ -58,4 +64,24 @@ h1 {
 .container {
   width: 80%;
   margin-inline: auto;
+}
+
+.alert {
+  background-color: var(--alert-color);
+  color: white;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  padding: 4px;
+  margin: 10px;
+}
+
+.notice {
+  background-color: var(--notice-color);
+  color: black;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  padding: 4px;
+  margin: 10px;
 }
