@@ -16,7 +16,12 @@
         <h1>The Blog application</h1>
         <a href='\'>Home</a>
         <% if user_signed_in?%>
-          <%=button_to "Log out", destroy_user_session_path, method: :delete, data: { turbo: false }%>
+          <%=button_to "Log out", 
+            destroy_user_session_path, 
+            method: :delete,
+            class:'link',
+            data: { turbo: false }
+          %>
         <%end%>
       </header>
       <% if flash.any?%>

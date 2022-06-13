@@ -85,3 +85,15 @@ h1 {
   padding: 4px;
   margin: 10px;
 }
+
+.link {
+  border: none;
+  background-color: inherit;
+  font-size: 1.1rem;
+  color: cornflowerblue;
+}
+
+.link:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
