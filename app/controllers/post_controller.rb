@@ -6,7 +6,7 @@ class PostController < ApplicationController
   def create
     text = params[:post][:text]
     @post = Post.new(post_params)
-    @post.author = ApplicationController.current_user
+    @post.author = current_user
 
     if text.blank?
       flash.now[:alert] = 'Text can not be empty'

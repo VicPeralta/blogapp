@@ -11,8 +11,27 @@
   </head>
 
   <body>
-    <p class="notice"><%=notice%></p>
-    <p class="alert"><%=alert%></p>
-    <%= yield %>
+    <div class='container'>
+      <header>
+        <h1>The Blog application</h1>
+        <a href='\'>Home</a>
+        <% if user_signed_in?%>
+          <%=button_to "Log out", destroy_user_session_path, method: :delete, data: { turbo: false }%>
+        <%end%>
+      </header>
+      <% if flash.any?%>
+          <% flash.each do |name, msg| -%>
+              <%if name=='alert'%>
+                <div class='alert'>
+                <%= content_tag :div, msg, class: name %>
+              <%else%>
+                <div class='notice'>
+                <%= content_tag :div, msg, class: name %>
+              <% end -%>
+              </div>
+          <% end -%>
+      <%end%>
+      <%= yield %>
+    </div>
   </body>
 </html>

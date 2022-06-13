@@ -47,6 +47,8 @@ gem 'bootsnap', require: false
 # Add rubocop
 gem 'rubocop', '>= 1.0', '< 2.0'
 
+# letter opener
+gem 'letter_opener'
 # Use Sass to process CSS
 # gem "sassc-rails"
 

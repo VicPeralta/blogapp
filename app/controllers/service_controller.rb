@@ -1,10 +1,6 @@
 class ServiceController < ApplicationController
-  def initialize
-    super()
-    @current_user = ApplicationController.current_user
-  end
-
   def like
+    @current_user = current_user
     user = User.find(params[:user_id])
     post = Post.find(params[:post_id])
     Like.create(author: user, post: post)
@@ -12,6 +8,7 @@ class ServiceController < ApplicationController
   end
 
   def comment
+    @current_user = current_user
     post = Post.find(params[:post_id])
     text = params[:text]
     if text == ''
