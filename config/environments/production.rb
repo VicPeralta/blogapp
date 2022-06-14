@@ -18,7 +18,16 @@ Rails.application.configure do
 
   
   config.action_mailer.default_url_options = { host: 'safe-brook-54426.herokuapp.com' }
-
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    address:              'in-v3.mailjet.com',
+    port:                 587,
+    domain:               'thebloggerapp.com',
+    user_name:            ENV['MAIL_USERNAME'],
+    password:             ENV['MAIL_PASSWORD'],
+    authentication:       'plain',
+    enable_starttls_auto: true
+  }
   # Ensures that a master key has been made available in either ENV["RAILS_MASTER_KEY"]
   # or in config/master.key. This key is used to decrypt credentials (and other encrypted files).
   # config.require_master_key = true
