@@ -19,10 +19,25 @@
 }
 
 .post-detail .like-button {
-  padding: 5px 10px;
+  padding: 4px 10px;
   background-color: red;
   color: white;
   border: none;
   text-decoration: none;
-  border-radius: 5px;
+  border-radius: 6px;
+  font-size: 0.9rem;
+}
+
+.post-detail .like-button:hover {
+  background-color: white;
+  color: red;
+  border: 2px solid red;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.italic {
+  font-style: italic;
 }

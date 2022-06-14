@@ -4,12 +4,4 @@
   <a href='/users/<%=user_info.id%>/posts/<%=post.id%>'><%=post.text%></a>
   </p>
   <p class='post-counters'>Comments: <%=post.commentsCounter%> Likes: <%=post.likesCounter%></p>
-  <% if can? :manage, post%>
-    <%= 
-      button_to "Delete", 
-      post_delete_path(user_id:user_info.id, id:post.id),
-      method: :delete,
-      data: { turbo: false }
-    %>
-  <%end%>
 </div>
