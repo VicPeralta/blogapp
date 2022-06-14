@@ -34,8 +34,7 @@ To get a local copy follow these simple example steps.
 ![](./mobile.png)
 
 ## Live demo
-
-https://tranquil-beyond-78317.herokuapp.com/
+[Demo](https://safe-brook-54426.herokuapp.com/)
 
 ## Authors
 
