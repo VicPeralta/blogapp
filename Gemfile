@@ -13,6 +13,8 @@ gem 'sprockets-rails'
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 1.1'
 
+gem 'devise'
+
 # Use the Puma web server [https://github.com/puma/puma]
 gem 'puma', '~> 5.0'
 
@@ -45,6 +47,8 @@ gem 'bootsnap', require: false
 # Add rubocop
 gem 'rubocop', '>= 1.0', '< 2.0'
 
+# letter opener
+gem 'letter_opener'
 # Use Sass to process CSS
 # gem "sassc-rails"
 
