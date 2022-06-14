@@ -11,4 +11,14 @@ class PostsController < ApplicationController
     @user_info = User.find(user_index)
     @post_info = Post.includes(:comments, comments: [:author]).find(post_index)
   end
+
+  def delete
+    puts 'Deleting'
+    puts params
+    post_index = params['id'].to_i
+    user_id = params['user_id'].to_i
+    post = Post.find(post_index)
+    post.destroy
+    redirect_to user_path(id: user_id), notice: 'Post deleted'
+  end
 end

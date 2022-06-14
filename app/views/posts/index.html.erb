@@ -4,7 +4,17 @@
   <% @posts.each do |post| %>
     <%= render partial:"shared/post_card", locals: {post:post, user_info:@user_info }%>
     <% post.comments.each do |comment|%>
-      <p class='comment'><%=comment.author.name%>: <%=comment.text%></p>
+      <p class='comment'>
+        <%=comment.author.name%>: <%=comment.text%>
+        <% if can? :manage, comment%>
+          <%= 
+            button_to "Delete", 
+            delete_comment_path(user_id:@user_info.id, post_id:post.id, comment_id: comment.id  ),
+            method: :delete,
+            data: { turbo: false }
+          %>
+        <%end%>
+      </p>
     <% end %>
   <% end %>
 </div>

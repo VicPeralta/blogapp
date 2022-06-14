@@ -20,4 +20,8 @@ class User < ApplicationRecord
     # method returns the 3 most recent posts by this user
     Post.where(author: self).order(created_at: :desc).limit(3)
   end
+
+  def admin?
+    role == 'admin'
+  end
 end
