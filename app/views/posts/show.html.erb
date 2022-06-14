@@ -6,14 +6,39 @@
       <p><%=@post_info.title%>&nbsp;</p>
       <p>by <%=@user_info.name%></p>
       <div class='post-counters'>
-        <p>Comments: <%=@post_info.commentsCounter%> Likes: <%=@post_info.likesCounter%></p>
+        <p>Comments: <%=@post_info.commentsCounter%> 
+          Likes: <%=@post_info.likesCounter%></p>
       </div>
     </div>
     <p class='post-text'><%=@post_info.text%></p>
-    <%= link_to "Like", service_index_path(user_id:@user_info.id, post_id:@post_info.id), class: "like-button" %>
+    <%= link_to "Like", 
+        service_index_path(user_id:@user_info.id, post_id:@post_info.id), 
+        class: "like-button" %>
+    <% if can? :manage, @post_info%>
+      <%= 
+        button_to "Delete", 
+        post_delete_path(user_id:@user_info.id, id:@post_info.id),
+        method: :delete,
+        class: 'delete-button',
+        data: { turbo: false }
+      %>
+    <%end%>
   </div>
   <% @post_info.comments.each do |comment|%>
-    <p class='comment'><%=comment.author.name%>: <%=comment.text%></p>
+    <p class='bold italic'>
+      <%=comment.author.name%>:
+    </p>
+    <p class='comment-text'>
+      <%=comment.text%>
+    </p>
+    <% if can? :manage, comment%>
+      <%=button_to "Delete", 
+        delete_comment_path(user_id:@user_info.id, post_id:@post_info.id, comment_id: comment.id),
+        method: :delete,
+        class:'delete-button',
+        data: { turbo: false }
+      %>
+    <%end%>
   <% end %>
   <%= render partial: "shared/add_comment", locals: {post_id:@post_info.id, user_id:@user_info.id }%>
 </div>

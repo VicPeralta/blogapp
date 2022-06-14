@@ -18,4 +18,11 @@ class ServiceController < ApplicationController
     Comment.create(author: @current_user, post: post, text: text)
     redirect_to user_post_path(user_id: params[:user_id], id: params[:post_id]), notice: 'Comment added'
   end
+
+  def delete_comment
+    comment = Comment.find(params[:comment_id])
+    comment.destroy
+    comment.save
+    redirect_to user_post_path(user_id: params[:user_id], id: params[:post_id]), notice: 'Comment deleted'
+  end
 end

@@ -24,6 +24,9 @@
           %>
         <%end%>
       </header>
+      <% if user_signed_in?%>
+        <p>Logged as: <%=current_user.name%></p>
+      <%end%>
       <% if flash.any?%>
           <% flash.each do |name, msg| -%>
               <%if name=='alert'%>

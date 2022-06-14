@@ -97,3 +97,21 @@ h1 {
   cursor: pointer;
   text-decoration: underline;
 }
+
+.delete-button {
+  margin-right: 10px;
+  margin-left: auto;
+  margin-top: 5px;
+  display: block;
+  padding: 4px 10px;
+  border-radius: 6px;
+  border: 1px solid crimson;
+  background-color: white;
+  color: crimson;
+}
+
+.delete-button:hover {
+  border: none;
+  background-color: crimson;
+  color: white;
+}
