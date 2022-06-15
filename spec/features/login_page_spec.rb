@@ -1,13 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'Integration test BlogApp', type: :feature do
-  # def log_in
-  #   visit root_path
-  #   fill_in 'user_email', with: 'victorperaltagomez@gmail.com'
-  #   fill_in 'user_password', with: '121212'
-  #   click_button 'Log in'
-  # end
-
+RSpec.describe 'Login page test', type: :feature do
   before :all do
     @first_user ||= User.create(
       name: 'Tom',
@@ -49,42 +42,32 @@ RSpec.describe 'Integration test BlogApp', type: :feature do
     @second_user.destroy
   end
 
-  context 'Login page' do
-    it 'See username and password inputs, and Log in button' do
-      visit root_path
-      expect(has_field?('user_email') && has_field?('user_password') && has_button?('Log in')).to be true
-    end
-
-    it 'Detail error with empty credentials' do
-      visit root_path
-      fill_in 'user_email', with: ''
-      fill_in 'user_password', with: ''
-      click_button 'Log in'
-      expect(page).to have_content 'Invalid Email or password.'
-    end
-
-    it 'Detail error with wrong credentials' do
-      visit root_path
-      fill_in 'user_email', with: 'user@example.com'
-      fill_in 'user_password', with: 'password'
-      click_button 'Log in'
-      expect(page).to have_content 'Invalid Email or password.'
-    end
-
-    it 'Correct Log in and redirect to HomePage' do
-      visit root_path
-      fill_in 'user_email', with: 'victorperaltagomez@gmail.com'
-      fill_in 'user_password', with: '121212'
-      click_button 'Log in'
-      expect(page).to have_current_path(root_path)
-    end
+  it 'See username and password inputs, and Log in button' do
+    visit root_path
+    expect(has_field?('user_email') && has_field?('user_password') && has_button?('Log in')).to be true
   end
 
-  # context 'Users Index page' do
-  #   it 'See the User name of all users' do
-  #     log_in
-  #     puts page.html
-  #     expect(has_field?(@first_user.name) && has_field?(@second_user.name)).to be true
-  #   end
-  # end
+  it 'Detail error with empty credentials' do
+    visit root_path
+    fill_in 'user_email', with: ''
+    fill_in 'user_password', with: ''
+    click_button 'Log in'
+    expect(page).to have_content 'Invalid Email or password.'
+  end
+
+  it 'Detail error with wrong credentials' do
+    visit root_path
+    fill_in 'user_email', with: 'user@example.com'
+    fill_in 'user_password', with: 'password'
+    click_button 'Log in'
+    expect(page).to have_content 'Invalid Email or password.'
+  end
+
+  it 'Correct Log in and redirect to HomePage' do
+    visit root_path
+    fill_in 'user_email', with: 'victorperaltagomez@gmail.com'
+    fill_in 'user_password', with: '121212'
+    click_button 'Log in'
+    expect(page).to have_current_path(root_path)
+  end
 end

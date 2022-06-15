@@ -1,7 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'Integration test BlogApp', type: :feature do
-
+RSpec.describe 'User index page', type: :feature do
   before :all do
     @first_user ||= User.create(
       name: 'Tom',
@@ -50,28 +49,26 @@ RSpec.describe 'Integration test BlogApp', type: :feature do
     @second_user.destroy
   end
 
-  context 'Index page' do
-    it 'Username of all other users should be visible.' do
-      User.all.each do |user|
-        expect(page).to have_content(user.name)
-      end
+  it 'Username of all other users should be visible.' do
+    User.all.each do |user|
+      expect(page).to have_content(user.name)
     end
+  end
 
-    it 'The profile picture for each user should be visible.' do
-      User.all.each do |user|
-        expect(page.has_xpath?("//img[@src = '#{user.photo}' ]"))
-      end
+  it 'The profile picture for each user should be visible.' do
+    User.all.each do |user|
+      expect(page.has_xpath?("//img[@src = '#{user.photo}' ]"))
     end
+  end
 
-    it 'The number of posts each user has written should be visible.' do
-      User.all.each do |user|
-        expect(page).to have_content("Number of posts: #{user.postCounter}")
-      end
+  it 'The number of posts each user has written should be visible.' do
+    User.all.each do |user|
+      expect(page).to have_content("Number of posts: #{user.postCounter}")
     end
+  end
 
-    it 'When I click on a user, I am redirected to that user\'s show page' do
-      find_link(User.first.name).click
-      expect(page).to have_current_path("/users/#{User.first.id}")
-    end
+  it 'When click on a user, is redirected to that user\'s show page' do
+    find_link(User.first.name).click
+    expect(page).to have_current_path("/users/#{User.first.id}")
   end
 end
