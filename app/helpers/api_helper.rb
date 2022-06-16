@@ -1,6 +1,6 @@
 module ApiHelper
   class JsonWebToken
-    SECRET_KEY = Rails.application.secrets.secret_key_base. to_s
+    SECRET_KEY = Rails.application.secrets.secret_key_base.to_s
     puts "Secret key:#{SECRET_KEY}"
     puts "Secret key type :#{SECRET_KEY.class}"
     def self.encode(payload)
