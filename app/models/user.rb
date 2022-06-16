@@ -10,6 +10,9 @@ class User < ApplicationRecord
   validates :postCounter,
             numericality: { only_integer: true, greater_than_or_equal_to: 0,
                             message: 'postCounter must be integer and >=0' }
+
+  after_save :add_token
+
   # To be used without a user instance
   def self.three_most_recent_posts(user)
     # method returns the 3 most recent posts for the given user
@@ -23,5 +26,9 @@ class User < ApplicationRecord
 
   def admin?
     role == 'admin'
+  end
+
+  def add_token
+    update_column(:token, ApiHelper::JsonWebToken.encode(email))
   end
 end

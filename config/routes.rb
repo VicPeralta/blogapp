@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get 'users/:author_id/show', to: 'api#show_users_posts', as: 'api_show_posts'
+  get 'posts/:post_id/comments', to: 'api#show_posts_comments', as: 'api_show_comments'
+  post 'posts/:post_id/comments', to: 'api#add_comment_to_post', as: 'api_add_comment'
   devise_for :users
   root 'users#index'
   get '/users/:user_id/posts', to:'posts#index', as: 'user_posts'
