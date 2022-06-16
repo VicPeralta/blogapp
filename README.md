@@ -44,6 +44,14 @@ To get a local copy follow these simple example steps.
 - Linkedin: [@VicPeralta](https://www.linkedin.com/in/vicperalta/)
 
 
+👤 **Behnam Aghaali**
+
+- GitHub: [https://github.com/Behnam1369](https://github.com/Behnam1369)
+- LinkedIn: [https://www.linkedin.com/in/behnam-aghaali](https://www.linkedin.com/in/behnam-aghaali)
+- Twitter: [https://twitter.com/behnamagh1369](https://twitter.com/behnamagh1369)
+
+
+
 ## 🤝 Contributing
 
 Contributions, issues, and feature requests are welcome!
