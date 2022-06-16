@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'Like model', type: :request do
+RSpec.describe 'User index page', type: :feature do
   before :all do
     @first_user ||= User.create(
       name: 'Tom',
@@ -26,8 +26,19 @@ RSpec.describe 'Like model', type: :request do
     Post.create(author: @first_user, title: 'Fourth Post', text: 'This is my fourth post')
     Post.create(author: @first_user, title: 'Fifth Post', text: 'This is my fifth post')
     post = Post.first
-    5.times { Comment.create(author: @second_user, post: post, text: 'Hi Tom!!') }
-    5.times { Like.create(author: @second_user, post: post) }
+    Comment.create(author: @second_user, post: post, text: 'Hi Tom!!')
+    Comment.create(author: @second_user, post: post, text: 'Hi Tom!!')
+    Comment.create(author: @second_user, post: post, text: 'Hi Tom!!')
+    Comment.create(author: @second_user, post: post, text: 'Hi Tom!!')
+    Comment.create(author: @second_user, post: post, text: 'Hi Tom!!')
+    Comment.create(author: @second_user, post: post, text: 'Hi Tom!!')
+  end
+
+  before :each do
+    visit root_path
+    fill_in 'user_email', with: 'victorperaltagomez@gmail.com'
+    fill_in 'user_password', with: '121212'
+    click_button 'Log in'
   end
 
   after :all do
@@ -37,16 +48,27 @@ RSpec.describe 'Like model', type: :request do
     @first_user.destroy
     @second_user.destroy
   end
-  it 'Creates a valid instance' do
-    post = Post.first
-    author = User.second
-    like = Like.new(author: author, post: post)
-    expect(like).to be_valid
+
+  it 'Username of all other users should be visible.' do
+    User.all.each do |user|
+      expect(page).to have_content(user.name)
+    end
   end
 
-  it 'Update likes counter for post' do
-    post = Post.first
-    Like.update_counter_for_post(post)
-    expect(post.likesCounter).to be == Like.where(post: post).count
+  it 'The profile picture for each user should be visible.' do
+    User.all.each do |user|
+      expect(page.has_xpath?("//img[@src = '#{user.photo}' ]"))
+    end
+  end
+
+  it 'The number of posts each user has written should be visible.' do
+    User.all.each do |user|
+      expect(page).to have_content("Number of posts: #{user.postCounter}")
+    end
+  end
+
+  it 'When click on a user, is redirected to that user\'s show page' do
+    find_link(User.first.name).click
+    expect(page).to have_current_path("/users/#{User.first.id}")
   end
 end

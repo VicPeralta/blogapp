@@ -4,6 +4,7 @@ class Like < ApplicationRecord
 
   after_save :increment_counter_for_post
   after_destroy :decrement_counter_for_post
+
   def self.update_counter_for_post(post)
     # method that updates the likes counter for a post.
     post.update(likesCounter: Like.where(post: post).count)
