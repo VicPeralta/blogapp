@@ -16,8 +16,21 @@ RSpec.describe 'Testint API', type: :request do
         required: ['token']
       }
       response '200', 'blog found' do
+        schema type: :array,
+          properties: {
+              author_id: { type: :integer },
+              title: { type: :string },
+              text: { type: :string },
+              commentsCounter: { type: :integer },
+              likesCounter: { type: :integer },
+              created_at: { type: :date },
+              updated_at: { type: :date },
+              id: { type: :integer }
+            },
+            required: [ 'id' ]
+
         let(:author_id) { 1 }
-        let(:token) { { token: "eyJhbGciOiJIUzI1NiJ9.InZpY3RvcnBlcmFsdGFnb21lekBnbWFpbC5jb20i.n3LHMWVU-kyXYdBpRRtIf1vr2bfmCemmwqTDihNrnwE" }}
+        let(:token) { { token: "eyJhbGciOiJIUzI1NiJ9.ImJlaG5hbS5hZ2hhYWxpQHlhaG9vLmNvbSI.EMSaznbIWMcFfu5VfvmTtfMQ39zWqgGM31UG36jIYEo" }}
         run_test!
       end
     end

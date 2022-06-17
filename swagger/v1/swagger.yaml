@@ -1,0 +1,58 @@
+---
+openapi: 3.0.1
+info:
+  title: API V1
+  version: v1
+paths:
+  "/users/{author_id}/show":
+    post:
+      summary: Retrieves a list of posts written by a certain user
+      tags:
+      - Posts
+      parameters:
+      - name: author_id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: blog found
+          content:
+            application/json:
+              schema:
+                type: array
+                properties:
+                  author_id:
+                    type: integer
+                  title:
+                    type: string
+                  text:
+                    type: string
+                  commentsCounter:
+                    type: integer
+                  likesCounter:
+                    type: integer
+                  created_at:
+                    type: date
+                  updated_at:
+                    type: date
+                  id:
+                    type: integer
+                required:
+                - id
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                token:
+                  type: string
+              required:
+              - token
+servers:
+- url: https://{defaultHost}
+  variables:
+    defaultHost:
+      default: www.example.com
