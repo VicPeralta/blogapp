@@ -1,48 +1,25 @@
 require 'swagger_helper'
 require 'json'
 
-RSpec.describe 'api/my', type: :request do
-  path '/users/{id}/show' do
-    get 'Retrieves a list of posts written by a certain user' do
+RSpec.describe 'Testint API', type: :request do
+  path '/users/{author_id}/show' do
+    post 'Retrieves a list of posts written by a certain user' do
       tags 'Posts'
       consumes 'application/json'
       produces 'application/json'
-      parameter name: :id, in: :path, type: :integer
-      # parameter name: :token, in: :body, type: :string
-      # parameter name: :pet, in: :body, schema: { type: :string }
-      parameter name: :name, in: :body, schema: {
+      parameter name: :author_id, in: :path, type: :string
+      parameter name: :token, in: :body, schema: {
         type: :object,
         properties: {
-          one: { type: :integer }
-        }
+          token: { type: :string }
+        },
+        required: ['token']
       }
-
-
       response '200', 'blog found' do
-        schema type: :array
-
-        let(:id) { 4 }
-        # let(:pet) { { name: 'Dodo' } }
-        # let(:token) { 'token' : 'eyJhbGciOiJIUzI1NiJ9.ImFAYi5jIg.wi8komaIv4rZRRqkHpED0U3VZbyexPL2BgzvskAOwgE' } 
-        # let(:body_params) { { token: "eyJhbGciOiJIUzI1NiJ9.ImFAYi5jIg.wi8komaIv4rZRRqkHpED0U3VZbyexPL2BgzvskAOwgE" } }
-        let(:name) do
-          text = '{"one":1}'
-          data = JSON.parse(text)
-          data
-          # JSON.parse("{ name: 'eyJhbGciOiJIUzI1NiJ9.ImFAYi5jIg.wi8komaIv4rZRRqkHpED0U3VZbyexPL2BgzvskAOwgE' }")
-        end
+        let(:author_id) { 1 }
+        let(:token) { { token: "eyJhbGciOiJIUzI1NiJ9.InZpY3RvcnBlcmFsdGFnb21lekBnbWFpbC5jb20i.n3LHMWVU-kyXYdBpRRtIf1vr2bfmCemmwqTDihNrnwE" }}
         run_test!
       end
-
-      # response '404', 'blog not found' do
-      #   let(:id) { 'invalid' }
-      #   run_test!
-      # end
-
-      # response '406', 'unsupported accept header' do
-      #   let(:'Accept') { 'application/foo' }
-      #   run_test!
-      # end
     end
   end
 end
