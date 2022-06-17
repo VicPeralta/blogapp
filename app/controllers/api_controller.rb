@@ -16,7 +16,9 @@ class ApiController < ApplicationController
     respond_to :json
     token = params[:token]
     author_id = params[:author_id]
-    puts "Token: #{token}"
+    puts "params: #{params}"
+    puts "token: #{token}"
+    puts "author_id: #{author_id}"
     if !author_id || !token
       render json: { error: 'Invalid parameters' }, status: 400
       return

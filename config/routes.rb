@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
+  mount Rswag::Ui::Engine => '/api-docs'
+  mount Rswag::Api::Engine => '/api-docs'
   get 'users/:author_id/show', to: 'api#show_users_posts', as: 'api_show_posts'
+  post 'users/:author_id/show', to: 'api#show_users_posts'
   get 'posts/:post_id/comments', to: 'api#show_posts_comments', as: 'api_show_comments'
   post 'posts/:post_id/comments', to: 'api#add_comment_to_post', as: 'api_add_comment'
   devise_for :users
