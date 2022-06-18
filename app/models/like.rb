@@ -2,7 +2,7 @@ class Like < ApplicationRecord
   belongs_to :author, class_name: 'User'
   belongs_to :post
 
-  after_save :increment_counter_for_post
+  after_create :increment_counter_for_post
   after_destroy :decrement_counter_for_post
 
   def self.update_counter_for_post(post)
