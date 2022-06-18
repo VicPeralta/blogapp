@@ -13,7 +13,7 @@ class Post < ApplicationRecord
             numericality: { only_integer: true, greater_than_or_equal_to: 0,
                             message: 'likesCounter must be integer and >=0' }
 
-  after_save :increment_user_post_counter
+  after_create :increment_user_post_counter
   after_destroy :decrement_user_post_counter
 
   def self.update_counter_for_user(user)

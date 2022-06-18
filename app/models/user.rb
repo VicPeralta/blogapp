@@ -11,7 +11,7 @@ class User < ApplicationRecord
             numericality: { only_integer: true, greater_than_or_equal_to: 0,
                             message: 'postCounter must be integer and >=0' }
 
-  after_save :add_token
+  before_create :add_token
 
   # To be used without a user instance
   def self.three_most_recent_posts(user)
@@ -29,6 +29,6 @@ class User < ApplicationRecord
   end
 
   def add_token
-    update_column(:token, ApiHelper::JsonWebToken.encode(email))
+    self.token = ApiHelper::JsonWebToken.encode(email)
   end
 end
