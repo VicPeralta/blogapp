@@ -59,7 +59,8 @@ gem 'letter_opener'
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
 
-gem 'rswag'
+gem 'rswag-api'
+gem 'rswag-ui'
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
@@ -70,6 +71,7 @@ group :development, :test do
   gem 'rspec-rails', '~> 6.0.0.rc1'
   # Add bullet gem
   gem 'bullet'
+  gem 'rswag-specs'
 end
 
 group :development do
