@@ -55,7 +55,7 @@ To get a local copy follow these simple steps.
 6.- Open the browser at this address:  
 `http://127.0.0.1:3000/`   
 
-![](./blogapp.gif)
+![](./blogApp.gif)
 
 ## Live demo
 
