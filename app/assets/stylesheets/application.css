@@ -66,6 +66,12 @@ h1 {
   margin-inline: auto;
 }
 
+@media (max-width: 500px) {
+  .container {
+    width: 95%;
+  }
+}
+
 .alert {
   background-color: var(--alert-color);
   color: white;
@@ -114,4 +120,19 @@ h1 {
   border: none;
   background-color: crimson;
   color: white;
+}
+
+.signed-as {
+  margin: 5px;
+}
+
+.user-name {
+  display: inline;
+  font-weight: bold;
+}
+
+.links {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
 }

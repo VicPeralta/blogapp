@@ -1,5 +1,4 @@
 
-<div class='container'>
   <%= render partial: "shared/user_card", locals: {user:@user_info }%>
   <div class='bio-info'>
     <h3>Bio</h3>
@@ -10,4 +9,3 @@
       <%= render partial: "shared/post_card", locals: {post: post, user_info: @user_info}%>
     <% end %>
     <a class='all-button' href='/users/<%=@user_info.id%>/posts'>See all posts</a>
-</div>
