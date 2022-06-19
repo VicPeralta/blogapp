@@ -1,24 +1,22 @@
-<div class='container'>
-  <h1>New Post</h1>
+<h1>New Post</h1>
 
-  <%= form_with model: @post, class:'form',url: post_new_path do |form| %>
-    <% if @post.errors.any? %>
-    <div class='alert'>
-      <% @post.errors.full_messages.each do |error|%>
-        <p>Error</p>
-        <p> <%=error%> </p>
-      <% end %>
-    </div>
+<%= form_with model: @post, class:'form',url: post_new_path do |form| %>
+  <% if @post.errors.any? %>
+  <div class='alert'>
+    <% @post.errors.full_messages.each do |error|%>
+      <p>Error</p>
+      <p> <%=error%> </p>
     <% end %>
-
-    <div class='form-group'>
-      <%= form.label :title %>
-      <%= form.text_field :title, placeholder:'Enter title' %>
-    </div>
-    <div class='form-group'>
-      <%= form.label :text %>
-      <%= form.text_area :text, placeholder:'Enter post text', size:'30x10' %>
-    </div>
-    <%= form.submit  %>
-  <% end %>
   </div>
+  <% end %>
+
+  <div class='form-group'>
+    <%= form.label :title %>
+    <%= form.text_field :title, placeholder:'Enter title' %>
+  </div>
+  <div class='form-group'>
+    <%= form.label :text %>
+    <%= form.text_area :text, placeholder:'Enter post text', size:'30x10' %>
+  </div>
+  <%= form.submit  %>
+<% end %>

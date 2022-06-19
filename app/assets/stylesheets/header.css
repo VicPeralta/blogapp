@@ -1,5 +1,4 @@
 header {
-  width: 80%;
   border: 1px solid cornflowerblue;
   border-radius: 8px;
   display: flex;
@@ -19,4 +18,18 @@ header a {
 header a:hover {
   color: white;
   background-color: cornflowerblue;
+}
+
+header .right {
+  display: flex;
+  align-items: baseline;
+  width: 30%;
+  justify-content: space-around;
+}
+
+@media (max-width: 500px) {
+  header .right {
+    flex-direction: column;
+    align-items: center;
+  }
 }

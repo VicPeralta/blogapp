@@ -11,6 +11,18 @@
   align-items: baseline;
 }
 
+@media (max-width: 500px) {
+  .post-detail .header {
+    flex-direction: column;
+    gap: 3px;
+  }
+
+  .post-detail {
+    padding: 10px;
+    margin: 10px auto;
+  }
+}
+
 .post-detail .post-text {
   margin: 10px auto;
   text-overflow: initial;
