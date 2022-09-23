@@ -3,7 +3,7 @@ class User < ApplicationRecord
   # :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :confirmable
-  has_many :posts
+  has_many :posts, class_name: 'Post', foreign_key: 'author_id', dependent: :destroy
   has_many :comments
   has_many :likes
   validates :name, presence: { message: 'Name can not be blank' }

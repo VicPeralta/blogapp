@@ -29,7 +29,7 @@ RSpec.describe 'Testint API', type: :request do
         # Token victorperaltagomez@gmail.com
         # eyJhbGciOiJIUzI1NiJ9.InZpY3RvcnBlcmFsdGFnb21lekBnbWFpbC5jb20i.n3LHMWVU-kyXYdBpRRtIf1vr2bfmCemmwqTDihNrnwE
         let(:token) do
-          { token: 'eyJhbGciOiJIUzI1NiJ9.ImJlaG5hbS5hZ2hhYWxpQHlhaG9vLmNvbSI.'\
+          { token: 'eyJhbGciOiJIUzI1NiJ9.ImJlaG5hbS5hZ2hhYWxpQHlhaG9vLmNvbSI.' \
                    'EMSaznbIWMcFfu5VfvmTtfMQ39zWqgGM31UG36jIYEo' }
         end
         run_test!
