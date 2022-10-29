@@ -13,13 +13,16 @@
         service_index_path(user_id:@user_info.id, post_id:@post_info.id), 
         class: "like-button" %>
     <% if can? :manage, @post_info%>
-      <%= 
+      <%# <%= 
         button_to "Delete", 
         post_delete_path(user_id:@user_info.id, id:@post_info.id),
         method: :delete,
         class: 'delete-button',
         data: { turbo: false }
-      %>
+      %> %>
+      <%= link_to "Delete",
+      post_delete_path(user_id:@user_info.id, id:@post_info.id), 
+      data: { turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
     <%end%>
   </div>
   <div class="comments">
