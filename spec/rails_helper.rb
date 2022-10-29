@@ -60,4 +60,10 @@ RSpec.configure do |config|
   config.filter_rails_from_backtrace!
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
+  Capybara.configure do |c|
+    c.run_server = false
+    c.app_host = 'http://127.0.0.1:3000'
+    c.server_port = 3000
+    c.default_host = 'http://127.0.0.1:3000'
+  end
 end
