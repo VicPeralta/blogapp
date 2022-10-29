@@ -19,6 +19,6 @@ class PostsController < ApplicationController
     user_id = params['user_id'].to_i
     post = Post.find(post_index)
     post.destroy
-    redirect_to user_path(id: user_id), notice: 'Post deleted'
+    redirect_to user_path(id: user_id), notice: 'Post deleted', status: 303
   end
 end
