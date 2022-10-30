@@ -1,7 +1,15 @@
 require 'swagger_helper'
 require 'json'
 
-RSpec.describe 'Testint API', type: :request do
+RSpec.describe 'Testing API', type: :request do
+  before(:all) do
+    @user = User.create(name: 'Victor', photo: '', bio: 'bio', email: 'victorperaltagomez@gmail.com', password: '121212')
+    @user.confirm
+  end
+
+  after(:all) do
+    @user.destroy
+  end
   path '/users/{author_id}/show' do
     post 'Retrieves a list of posts written by a certain user' do
       tags 'Posts'
@@ -26,11 +34,8 @@ RSpec.describe 'Testint API', type: :request do
                required: ['id']
 
         let(:author_id) { 1 }
-        # Token victorperaltagomez@gmail.com
-        # eyJhbGciOiJIUzI1NiJ9.InZpY3RvcnBlcmFsdGFnb21lekBnbWFpbC5jb20i.n3LHMWVU-kyXYdBpRRtIf1vr2bfmCemmwqTDihNrnwE
         let(:token) do
-          { token: 'eyJhbGciOiJIUzI1NiJ9.ImJlaG5hbS5hZ2hhYWxpQHlhaG9vLmNvbSI.' \
-                   'EMSaznbIWMcFfu5VfvmTtfMQ39zWqgGM31UG36jIYEo' }
+          { token: @user.token}
         end
         run_test!
       end
