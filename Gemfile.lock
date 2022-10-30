@@ -101,7 +101,7 @@ GEM
       warden (~> 1.2.3)
     diff-lcs (1.5.0)
     erubi (1.11.0)
-    ffi (1.15.5-x64-mingw-ucrt)
+    ffi (1.15.5)
     ffi (1.15.5-x64-mingw32)
     ffi (1.15.5-x64-unknown)
     globalid (1.0.0)
@@ -134,7 +134,6 @@ GEM
     matrix (0.4.2)
     method_source (1.0.0)
     mini_mime (1.1.2)
-    mini_portile2 (2.8.0)
     minitest (5.16.3)
     msgpack (1.6.0)
     net-imap (0.3.1)
@@ -146,8 +145,7 @@ GEM
     net-smtp (0.3.2)
       net-protocol
     nio4r (2.5.8)
-    nokogiri (1.13.9)
-      mini_portile2 (~> 2.8.0)
+    nokogiri (1.13.6-x64-mingw32)
       racc (~> 1.4)
     nokogiri (1.13.6-x64-unknown)
       racc (~> 1.4)
@@ -157,7 +155,8 @@ GEM
     parallel (1.22.1)
     parser (3.1.2.1)
       ast (~> 2.4.1)
-    pg (1.4.4-x64-mingw-ucrt)
+    pg (1.4.4)
+    pg (1.4.4-x64-mingw32)
     public_suffix (5.0.0)
     puma (5.6.5)
       nio4r (~> 2.0)
@@ -291,7 +290,6 @@ GEM
     zeitwerk (2.6.1)
 
 PLATFORMS
-  ruby
   x64-mingw32
   x64-unknown
   x86_64-linux
@@ -326,7 +324,7 @@ DEPENDENCIES
   webdrivers
 
 RUBY VERSION
-   ruby 2.7.0p0
+   ruby 3.0.3p157
 
 BUNDLED WITH
    2.3.24
