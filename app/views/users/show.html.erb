@@ -1,11 +1,11 @@
 
-  <%= render partial: "shared/user_card", locals: {user:@user_info }%>
+  <%= render partial: "shared/user_card", locals: {user:@user }%>
   <div class='bio-info'>
     <h3>Bio</h3>
-    <p class='bio-info'><%=@user_info.bio%></p>
+    <p class='bio-info'><%=@user.bio%></p>
   </div>
-  <a class='all-button' href='/users/<%=@user_info.id%>/post/new'> Create new post </a>
+  <%= link_to 'Create new post', new_user_post_path(@user)%>
   <%@posts.each do |post| %>
-      <%= render partial: "shared/post_card", locals: {post: post, user_info: @user_info}%>
-    <% end %>
-    <a class='all-button' href='/users/<%=@user_info.id%>/posts'>See all posts</a>
+      <%= render partial: "shared/post_card", locals: {post: post, user_info: @user}%>
+  <% end %>
+  <%= link_to 'See all posts', user_posts_path(@user)%>

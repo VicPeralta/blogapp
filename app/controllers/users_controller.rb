@@ -5,7 +5,7 @@ class UsersController < ApplicationController
 
   def show
     index = params['id'].to_i
-    @user_info = User.find(index)
-    @posts = @user_info.three_most_recent_posts
+    @user = User.find(index)
+    @posts = @user.three_most_recent_posts
   end
 end
