@@ -1,5 +1,5 @@
   <%= form_with model: @comment, class:'form', 
-    url: service_comment_path(post_id: post_id, user_id: user_id) do |form| %>
+    url: new_user_post_comment_path(post_id: post_id, user_id: user_id) do |form| %>
     <div class='add-comment'>
     <div class='form-group'>
       <%= form.label :text, "Comment" %>

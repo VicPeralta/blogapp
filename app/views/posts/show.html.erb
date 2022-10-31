@@ -1,32 +1,26 @@
   <div class='post-detail'>
     <div class='header'>
-      <p>Posts #<%=@post_info.id%>&nbsp;</p>
-      <p class="bold" ><%=@post_info.title%>&nbsp;</p>
-      <p class="italic" >by <%=@user_info.name%></p>
+      <p>Posts #<%=@post.id%>&nbsp;</p>
+      <p class="bold" ><%=@post.title%>&nbsp;</p>
+      <p class="italic" >by <%=@user.name%></p>
       <div class='post-counters'>
-        <p>Comments: <%=@post_info.commentsCounter%> 
-          Likes: <%=@post_info.likesCounter%></p>
+        <p>Comments: <%=@post.commentsCounter%> 
+          Likes: <%=@post.likesCounter%></p>
       </div>
     </div>
-    <p class='post-text'><%=@post_info.text%></p>
+    <p class='post-text'><%=@post.text%></p>
     <%= link_to "Like", 
-        service_index_path(user_id:@user_info.id, post_id:@post_info.id), 
+        user_post_likes_path(user_id:@user.id, post_id:@post.id), 
         class: "like-button" %>
-    <% if can? :manage, @post_info%>
-      <%# <%= 
-        button_to "Delete", 
-        post_delete_path(user_id:@user_info.id, id:@post_info.id),
-        method: :delete,
-        class: 'delete-button',
-        data: { turbo: false }
-      %> %>
+    <% if can? :manage, @post%>
       <%= link_to "Delete",
-      post_delete_path(user_id:@user_info.id, id:@post_info.id), 
+      user_post_path(user_id:@user.id, id:@post.id),
+      class: 'delete-button',
       data: { turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
     <%end%>
   </div>
   <div class="comments">
-    <% @post_info.comments.each do |comment|%>
+    <% @post.comments.each do |comment|%>
       <div class="comment">
         <p class='bold italic'>
           <%=comment.author.name%>:
@@ -36,7 +30,7 @@
         </p>
         <% if can? :manage, comment%>
           <%=button_to "Delete", 
-            delete_comment_path(user_id:@user_info.id, post_id:@post_info.id, comment_id: comment.id),
+            user_post_comment_path(user_id:@user.id, post_id:@post.id, comment_id: comment.id),
             method: :delete,
             class:'delete-button',
             data: { turbo: false }
@@ -45,4 +39,4 @@
       </div>
     <% end %>
   </div>
-  <%= render partial: "shared/add_comment", locals: {post_id:@post_info.id, user_id:@user_info.id }%>
+  <%= render partial: "shared/add_comment", locals: {post_id:@post.id, user_id:@user.id }%>

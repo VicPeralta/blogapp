@@ -1,24 +1,41 @@
 class PostsController < ApplicationController
+  before_action :set_user
+
+  def new
+    @post = @user.posts.new
+  end
+
+  def create
+    @post = @user.posts.new(post_params)
+    @post.author = current_user
+   
+    if @post.save
+      redirect_to user_path(id: @post.author.id), notice: 'Post created sucessfully'
+    else
+      render :new, status: 400
+    end
+  end
+
   def index
-    user_index = params['user_id'].to_i
-    @user_info = User.find(user_index)
-    @posts = Post.includes(:comments, comments: [:author]).where(author_id: user_index).order(id: :desc)
+    @posts = @user.posts.includes(:comments).order(id: :desc)
   end
 
   def show
-    user_index = params['user_id'].to_i
-    post_index = params['id'].to_i
-    @user_info = User.find(user_index)
-    @post_info = Post.includes(:comments, comments: [:author]).find(post_index)
+    @post = @user.posts.includes(:comments).find(params[:id])
   end
 
-  def delete
-    puts 'Deleting'
-    puts params
-    post_index = params['id'].to_i
-    user_id = params['user_id'].to_i
-    post = Post.find(post_index)
-    post.destroy
-    redirect_to user_path(id: user_id), notice: 'Post deleted', status: 303
+  def destroy
+    @user.posts.find(params[:id]).destroy
+    redirect_to user_path(@user), notice: 'Post deleted', status: 303
+  end
+
+  private
+
+  def set_user
+    @user = User.find(params[:user_id])
+  end
+
+  def post_params
+    params.require(:post).permit(:title, :text)
   end
 end
