@@ -21,7 +21,7 @@ class PostsController < ApplicationController
   end
 
   def show
-    @post = @user.posts.includes(:comments).find(params[:id])
+    @post = @user.posts.includes(:comments, comments: [:author]).find(params[:id])
   end
 
   def destroy

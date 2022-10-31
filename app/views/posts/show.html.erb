@@ -39,4 +39,4 @@
       </div>
     <% end %>
   </div>
-  <%= render partial: "shared/add_comment", locals: {post_id:@post.id, user_id:@user.id }%>
+  <%= render partial: "shared/add_comment", locals: {user:@user, post:@post }%>

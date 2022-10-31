@@ -1,5 +1,5 @@
-  <%= form_with model: @comment, class:'form', 
-    url: new_user_post_comment_path(post_id: post_id, user_id: user_id) do |form| %>
+  <%= form_with url: user_post_comments_path(user, post), class:'form', 
+    url: user_post_comments_path(user, post) do |form| %>
     <div class='add-comment'>
     <div class='form-group'>
       <%= form.label :text, "Comment" %>
