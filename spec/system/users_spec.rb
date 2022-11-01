@@ -28,6 +28,9 @@ RSpec.describe 'Users', type: :system do
     visit user_path(id: @user.id)
     expect(page).to have_content @user.name
   end
+
+  private
+
   def log_in
     visit new_user_session_path
     fill_in 'Email', with: @user.email

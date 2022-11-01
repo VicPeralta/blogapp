@@ -29,7 +29,6 @@ RSpec.describe 'Post index page test', type: :feature do
     5.times do
       Comment.create(author: @second_user, post: post, text: 'Hi Tom!!')
     end
-    
   end
 
   before :each do

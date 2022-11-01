@@ -20,7 +20,7 @@ RSpec.describe 'Like model', type: :request do
       created_at: '2022-06-15 01:40:30.027196000 +0000',
       confirmed_at: '2022-06-14 21:22:04.937699'
     )
-    (1..5).each do |n| 
+    (1..5).each do |n|
       @first_user.posts.create(title: "Post # #{n}", text: "This is post # #{n}")
     end
     5.times { @first_user.posts.first.comments.create(author: @second_user, text: 'Hi Tom!!') }
