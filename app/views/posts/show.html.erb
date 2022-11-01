@@ -9,9 +9,20 @@
       </div>
     </div>
     <p class='post-text'><%=@post.text%></p>
-    <%= link_to "Like", 
-        user_post_likes_path(user_id:@user.id, post_id:@post.id), 
-        class: "like-button" %>
+    <% like= @post.likes.find_by(author: current_user)%>
+    <% if !like.nil?%>
+      <%= link_to "Unlike", 
+            user_post_like_path(user_id:@user.id, post_id:@post.id, id: like.id),
+            data: { turbo_method: :delete},
+            class: "like-button" 
+      %>
+    <% else %>
+      <%= link_to "Like", 
+          user_post_likes_path(user_id:@user.id, post_id:@post.id),
+          data: { turbo_method: :post},
+          class: "like-button" 
+      %>
+    <% end %>
     <% if can? :manage, @post%>
       <%= link_to "Delete",
       user_post_path(user_id:@user.id, id:@post.id),
