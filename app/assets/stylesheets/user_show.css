@@ -11,8 +11,10 @@
   text-align: center;
   width: fit-content;
   display: block;
+  margin: 5px;
+  border-radius: 8px;
 }
 
 .all-button:hover {
-  padding: 20px 30px;
+  background-color: blue;
 }
