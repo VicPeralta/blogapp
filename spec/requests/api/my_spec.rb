@@ -3,14 +3,15 @@ require 'json'
 
 RSpec.describe 'Testing API', type: :request do
   before(:all) do
-    @user = User.create(name: 'Victor', photo: '', bio: 'bio', email: 'victorperaltagomez@gmail.com', password: '121212')
+    @user = User.create(name: 'Victor', photo: '', bio: 'bio',
+                        email: 'victorperaltagomez@gmail.com', password: '121212')
     @user.confirm
   end
 
   after(:all) do
     @user.destroy
   end
-  path '/users/{author_id}/show' do
+  path '/api/users/{author_id}/show' do
     post 'Retrieves a list of posts written by a certain user' do
       tags 'Posts'
       consumes 'application/json'
@@ -35,7 +36,7 @@ RSpec.describe 'Testing API', type: :request do
 
         let(:author_id) { 1 }
         let(:token) do
-          { token: @user.token}
+          { token: @user.token }
         end
         run_test!
       end

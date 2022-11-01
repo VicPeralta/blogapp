@@ -4,7 +4,7 @@ class LikesController < ApplicationController
     like = @post.likes.new(author: current_user)
     redirect_to user_post_path(@user, @post), notice: 'Like Added' if like.save
   end
-  
+
   def destroy
     like = @post.likes.find(params[:id])
     like.destroy

@@ -6,7 +6,7 @@ class Post < ApplicationRecord
   validates :title, presence: { message: 'Title can not be blank' },
                     length: { maximum: 250,
                               too_long: 'Title can only accept a maximum of 250 characters' }
-  validates :text, presence: { message: 'Post can not be empty'}
+  validates :text, presence: { message: 'Post can not be empty' }
   validates :commentsCounter,
             numericality: { only_integer: true, greater_than_or_equal_to: 0,
                             message: 'commentsCounter must be integer and >=0' }

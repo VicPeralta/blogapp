@@ -4,8 +4,8 @@
     <h3>Bio</h3>
     <p class='bio-info'><%=@user.bio%></p>
   </div>
-  <%= link_to 'Create new post', new_user_post_path(@user)%>
+  <%= link_to 'Create new post', new_user_post_path(@user), class:'all-button'%>
   <%@posts.each do |post| %>
       <%= render partial: "shared/post_card", locals: {post: post, user_info: @user}%>
   <% end %>
-  <%= link_to 'See all posts', user_posts_path(@user)%>
+  <%= link_to 'See all posts', user_posts_path(@user), class:'all-button'%>

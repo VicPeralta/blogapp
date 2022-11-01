@@ -5,7 +5,7 @@ RSpec.describe 'Users', type: :system do
   #   # driven_by(:rack_test)
   # end
   before :all do
-    @user = User.create(name: 'Victor', photo: '', bio: 'bio', 
+    @user = User.create(name: 'Victor', photo: '', bio: 'bio',
                         email: 'victorperaltagomez@gmail.com', password: '121212')
     @user.confirm
   end

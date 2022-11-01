@@ -8,7 +8,7 @@ class PostsController < ApplicationController
   def create
     @post = @user.posts.new(post_params)
     @post.author = current_user
-   
+
     if @post.save
       redirect_to user_path(id: @post.author.id), notice: 'Post created sucessfully'
     else
@@ -17,7 +17,7 @@ class PostsController < ApplicationController
   end
 
   def index
-    @posts = @user.posts.includes(:comments).order(id: :desc)
+    @posts = @user.posts.includes(:comments, comments: [:author]).order(id: :desc)
   end
 
   def show
