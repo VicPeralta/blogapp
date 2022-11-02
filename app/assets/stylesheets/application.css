@@ -105,6 +105,7 @@ h1 {
 }
 
 .delete-button {
+  width: fit-content;
   margin-right: 10px;
   margin-left: auto;
   margin-top: 5px;
@@ -114,6 +115,7 @@ h1 {
   border: 1px solid crimson;
   background-color: white;
   color: crimson;
+  text-decoration: none;
 }
 
 .delete-button:hover {

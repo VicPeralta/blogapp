@@ -20,14 +20,10 @@ RSpec.describe 'Like model', type: :request do
       created_at: '2022-06-15 01:40:30.027196000 +0000',
       confirmed_at: '2022-06-14 21:22:04.937699'
     )
-    Post.create(author: @first_user, title: 'First Post', text: 'This is my first post')
-    Post.create(author: @first_user, title: 'Second Post', text: 'This is my second post')
-    Post.create(author: @first_user, title: 'Third Post', text: 'This is my third post')
-    Post.create(author: @first_user, title: 'Fourth Post', text: 'This is my fourth post')
-    Post.create(author: @first_user, title: 'Fifth Post', text: 'This is my fifth post')
-    post = Post.first
-    5.times { Comment.create(author: @second_user, post: post, text: 'Hi Tom!!') }
-    5.times { Like.create(author: @second_user, post: post) }
+    (1..5).each do |n|
+      @first_user.posts.create(title: "Post # #{n}", text: "This is post # #{n}")
+    end
+    5.times { @first_user.posts.first.comments.create(author: @second_user, text: 'Hi Tom!!') }
   end
 
   after :all do
@@ -37,15 +33,15 @@ RSpec.describe 'Like model', type: :request do
     @first_user.destroy
     @second_user.destroy
   end
+
   it 'Creates a valid instance' do
-    post = Post.first
-    author = User.second
-    like = Like.new(author: author, post: post)
+    post = @first_user.posts.first
+    like = post.likes.new(author: @second_user)
     expect(like).to be_valid
   end
 
   it 'Update likes counter for post' do
-    post = Post.first
+    post = @first_user.posts.first
     Like.update_counter_for_post(post)
     expect(post.likesCounter).to be == Like.where(post: post).count
   end

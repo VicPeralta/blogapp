@@ -1,7 +1,10 @@
 <div class='post-card'>
-  <p class='post-title' >Post # <%=post.id %> <%=post.title%></p>
+  <%= link_to "Post # #{post.id} #{post.title}", 
+    user_post_path(user_id:@user.id, id: post.id), 
+    class:"post-title"
+  %>
   <p class='post-text'>
-  <a href='/users/<%=user_info.id%>/posts/<%=post.id%>'><%=post.text%></a>
+    <%=post.text%>
   </p>
   <p class='post-counters'>Comments: <%=post.commentsCounter%> Likes: <%=post.likesCounter%></p>
 </div>

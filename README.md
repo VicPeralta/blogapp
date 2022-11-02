@@ -15,10 +15,10 @@ You need to register with your email and password. After completion, you will re
 To use the API make sure to have your token.
 
 ## Endpoints
-- POST `https://safe-brook-54426.herokuapp.com/users/{author_id}/show`  
+- POST `https://safe-brook-54426.herokuapp.com/api/users/{author_id}/show`  
 Retreives a list of posts for the specified author. The body of the request must be of type json and contain the API token
 
-- POST `https://safe-brook-54426.herokuapp.com/posts/{post_id}/comments`  
+- POST `https://safe-brook-54426.herokuapp.com/api/posts/{post_id}/comments`  
 Retrieves a list of posts for the specified author. The body of the request must be of type json and contain the API token and the comment (text) to be added
 
 More to be added!!  

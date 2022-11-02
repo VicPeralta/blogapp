@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe 'User page test', type: :feature do
   before :all do
-    @first_user ||= User.create(
+    @first_user = User.create(
       name: 'Tom',
       photo: 'https://live.staticflickr.com/65535/52122569383_698a119861_z.jpg',
       bio: 'A teacher from Mexico',
@@ -11,7 +11,7 @@ RSpec.describe 'User page test', type: :feature do
       created_at: '2022-06-15 01:40:30.027196000 +0000',
       confirmed_at: '2022-06-14 21:22:04.937699'
     )
-    @second_user ||= User.create(
+    @second_user = User.create(
       name: 'Lilly',
       photo: 'https://live.staticflickr.com/65535/52122569383_698a119861_z.jpg',
       bio: 'A teacher from Poland',
@@ -20,26 +20,21 @@ RSpec.describe 'User page test', type: :feature do
       created_at: '2022-06-15 01:40:30.027196000 +0000',
       confirmed_at: '2022-06-14 21:22:04.937699'
     )
-    Post.create(author: @first_user, title: 'First Post', text: 'This is my first post')
-    Post.create(author: @first_user, title: 'Second Post', text: 'This is my second post')
-    Post.create(author: @first_user, title: 'Third Post', text: 'This is my third post')
-    Post.create(author: @first_user, title: 'Fourth Post', text: 'This is my fourth post')
-    Post.create(author: @first_user, title: 'Fifth Post', text: 'This is my fifth post')
-    post = Post.first
-    Comment.create(author: @second_user, post: post, text: 'Hi Tom!!')
-    Comment.create(author: @second_user, post: post, text: 'Hi Tom!!')
-    Comment.create(author: @second_user, post: post, text: 'Hi Tom!!')
-    Comment.create(author: @second_user, post: post, text: 'Hi Tom!!')
-    Comment.create(author: @second_user, post: post, text: 'Hi Tom!!')
-    Comment.create(author: @second_user, post: post, text: 'Hi Tom!!')
+    @first_user.posts.create(title: 'First Post', text: 'This is a post')
+    @first_user.posts.create(title: 'Second Post', text: 'This is a post')
+    @first_user.posts.create(title: 'Third Post', text: 'This is a post')
+    @first_user.posts.create(title: 'Fourth Post', text: 'This is a post')
+    @first_user.posts.create(title: 'Fifth Post', text: 'This is a post')
+    @first_user.posts.first.comments.create(author: @second_user, text: 'Hi Tom!!')
+    @first_user.posts.first.comments.create(author: @second_user, text: 'Hi Tom!!')
+    @first_user.posts.first.comments.create(author: @second_user, text: 'Hi Tom!!')
+    @first_user.posts.first.comments.create(author: @second_user, text: 'Hi Tom!!')
+    @first_user.posts.first.comments.create(author: @second_user, text: 'Hi Tom!!')
   end
 
   before :each do
-    visit root_path
-    fill_in 'user_email', with: 'victorperaltagomez@gmail.com'
-    fill_in 'user_password', with: '121212'
-    click_button 'Log in'
-    visit "/users/#{User.first.id}"
+    sign_in @first_user
+    visit user_path(@first_user)
   end
 
   after :all do
@@ -51,55 +46,40 @@ RSpec.describe 'User page test', type: :feature do
   end
 
   it 'The user\'s profile picture should be visible.' do
-    user_id = current_path.split('/')[2]
-    user = User.find(user_id)
-    expect(page.has_xpath?("//img[@src = '#{user.photo}' ]"))
+    expect(page.has_xpath?("//img[@src = '#{@first_user.photo}' ]"))
   end
 
   it 'The user\'s username should be visible.' do
-    user_id = current_path.split('/')[2]
-    user = User.find(user_id)
-    expect(page.has_link?(user.name)).to be true
+    expect(page.has_link?(@first_user.name)).to be true
   end
 
   it 'The number of posts that the user has written should be visible.' do
-    user_id = current_path.split('/')[2]
-    user = User.find(user_id)
-    expect(page).to have_content("Number of posts: #{user.postCounter}")
+    Post.update_counter_for_user(@first_user)
+    expect(page).to have_content("Number of posts: #{@first_user.postCounter}")
   end
 
   it 'The user\'s bio should be visible.' do
-    user_id = current_path.split('/')[2]
-    user = User.find(user_id)
-    expect(page).to have_content(user.bio) && have_content('Bio')
+    expect(page).to have_content(@first_user.bio) && have_content('Bio')
   end
 
   it 'The first 3 posts of the user should be visible' do
-    user_id = current_path.split('/')[2]
-    user = User.find(user_id)
-    user.three_most_recent_posts.all.each do |post|
+    @first_user.three_most_recent_posts.all.each do |post|
       expect(page).to have_content(post.title)
     end
   end
 
   it 'A button that redirects to the user\'s posts should be available.' do
-    user_id = current_path.split('/')[2]
-    user = User.find(user_id)
-    expect(page.has_link?('See all posts', href: "/users/#{user.id}/posts")).to be true
+    expect(page.has_link?('See all posts', href: "/users/#{@first_user.id}/posts")).to be true
   end
 
   it 'By clicking on a user\'s post, it should be redirected to that post\'s show page' do
-    user_id = current_path.split('/')[2]
-    user = User.find(user_id)
-    post = user.three_most_recent_posts[1]
-    find_link(href: "/users/#{user.id}/posts/#{post.id}").click
+    post = @first_user.three_most_recent_posts[1]
+    find_link(href: "/users/#{@first_user.id}/posts/#{post.id}").click
     expect(page).to have_content(post.title) && have_content(post.text)
   end
 
   it 'By clicking on the "see all posts", it should be redirected to the user\'s post\'s index page' do
-    user_id = current_path.split('/')[2]
-    user = User.find(user_id)
-    find_link('See all posts', href: "/users/#{user.id}/posts").click
-    expect(page).to have_current_path("/users/#{user.id}/posts")
+    find_link('See all posts', href: "/users/#{@first_user.id}/posts").click
+    expect(page).to have_current_path("/users/#{@first_user.id}/posts")
   end
 end

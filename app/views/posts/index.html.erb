@@ -1,7 +1,7 @@
-<%= render partial: "shared/user_card", locals:{user:@user_info }%>
+<%= render partial: "shared/user_card", locals:{user:@user}%>
 
 <% @posts.each do |post| %>
-  <%= render partial:"shared/post_card", locals: {post:post, user_info:@user_info }%>
+  <%= render partial:"shared/post_card", locals: {post:post, user:@user}%>
   <div class="comments">
     <% post.comments.each do |comment|%>
       <p class='bold italic'>
